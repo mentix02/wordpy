@@ -8,7 +8,7 @@ with open('requirements.txt', 'r') as rf:
 
 setuptools.setup(
     name='wordpy',
-    version='1.0.0',
+    version='1.0.2',
     url='https://github.com/mentix02/wordpy',
     license='MIT',
     author='manan',
