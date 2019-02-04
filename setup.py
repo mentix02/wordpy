@@ -8,7 +8,7 @@ with open('requirements.txt', 'r') as rf:
 
 setuptools.setup(
     name='wordpy',
-    version='1.0.2',
+    version='1.1.0',
     url='https://github.com/mentix02/wordpy',
     license='MIT',
     author='manan',
@@ -16,6 +16,8 @@ setuptools.setup(
     description='A dictionary program for nix* terminals',
     packages=['wordpy'],
     scripts=['bin/wordpy'],
+    test_suite='nose.collector',
+    tests_require=['nose'],
     long_description=long_description,
     long_description_content_type='text/markdown',
     keywords='wordpy dictionary api termdict',
@@ -28,7 +30,6 @@ setuptools.setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: Implementation :: CPython',
         'Topic :: Utilities'
     ]
 )

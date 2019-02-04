@@ -8,13 +8,14 @@ import requests
 
 from . import keys
 from . import utils
-from . import exceptions
+# from . import exceptions
 
 from thesaurus import Word as tWord
 
 BASE_URL = 'https://od-api.oxforddictionaries.com:443/api/v1/entries/en'
 
-keys = keys.keys # load keys for authentications
+keys = keys.keys  # load keys for authentications
+
 
 class Word:
     """
@@ -24,10 +25,10 @@ class Word:
     """
 
     def __init__(self, word: str):
-        
+
         # initialise variables
         # with empty values
-        
+
         self._data = ''
         self._json = {}
         self.category = ''
@@ -43,17 +44,20 @@ class Word:
         self.category = self.lexicalEntries[0]['lexicalCategory']
         self.senses = self.lexicalEntries[0]['entries'][0]['senses']
 
-        self.definition = self.senses[0]['definitions'][0]
+        self.definition = self.get_definition()
+
+    def get_definition(self) -> str:
+        return self.senses[0]['definitions'][0]
 
     def _raw_data(self) -> str:
 
         # make the actual request
         # with params loaded in the 
         # BASE_URL along with appropriate
-        # headers containg authentication keys
-        data =  requests.get(
+        # headers containing authentication keys
+        data = requests.get(
             f'{BASE_URL}/{self.word}',
-            headers = keys
+            headers=keys
         )
 
         # response status code 
@@ -70,13 +74,13 @@ class Word:
             # to return 403 is API keys 
             # are invalid or expired or
             # have extended the limit usage
-            print(utils.error(f'Invalid credentials. Please manually edit ' + \
-                '/tmp/keys.json with proper application id.'))
+            print(utils.error(f'Invalid credentials. Please manually edit ' +
+                              '/tmp/keys.json with proper application id.'))
             exit(1)
         elif data.status_code != 200:
             # handling all other errors
-            print(utils.error(f'Something went wrong. Please report a ' + \
-                'bug at https://github.com/mentix02/wordpy/issues.'))
+            print(utils.error(f'Something went wrong. Please report a ' +
+                              'bug at https://github.com/mentix02/wordpy/issues.'))
             exit(1)
 
         return data.text
@@ -85,7 +89,7 @@ class Word:
         """
         the design choice to 
         not call this in __init__()
-        was conciously made as this 
+        was consciously made as this
         calls another package that in
         turn makes other requests to a
         different online service thus 
@@ -97,7 +101,7 @@ class Word:
         treated like so. not all users want
         to know the synonyms for a word and
         if they do then this is the only 
-        functions that will be called and 
+        function that will be called and 
         the class will never go through the
         __repr__() method at all
         """
@@ -126,10 +130,10 @@ class Word:
         """
         for better formatting
         of instances of the Word 
-        class displaying the defintion
+        class displaying the definition
         instead of just the object with 
         it's memory location. arguable,
         it's more developer friendly as well
         """
-        return utils.success(f'{self.word.title()} ({self.category.lower()})\n') + \
-            f'{self.definition.capitalize()}'
+        return \
+            utils.success(f'{self.word.title()} ({self.category.lower()})\n') + f'{self.definition.capitalize()}'

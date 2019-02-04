@@ -1,0 +1,57 @@
+{
+   "car" : [
+      "a road vehicle, typically with four wheels, powered by an internal combustion engine and able to carry a small number of people",
+      [
+         "auto",
+         "automobile",
+         "bus",
+         "convertible",
+         "jeep",
+         "limousine",
+         "machine",
+         "motor",
+         "pickup",
+         "ride",
+         "station wagon",
+         "truck",
+         "van",
+         "wagon",
+         "bucket",
+         "buggy",
+         "compact",
+         "conveyance",
+         "coupe",
+         "hardtop",
+         "hatchback",
+         "heap",
+         "jalopy",
+         "junker",
+         "motorcar",
+         "roadster",
+         "sedan",
+         "subcompact",
+         "wheels",
+         "wreck",
+         "clunker",
+         "gas guzzler",
+         "touring car"
+      ]
+   ],
+   "airplane" : [
+      "a powered flying vehicle with fixed wings and a weight greater than that of the air it displaces; an aeroplane.",
+      [
+         "aircraft",
+         "airliner",
+         "cab",
+         "jet",
+         "plane",
+         "ship",
+         "aeroplane",
+         "airbus",
+         "airship",
+         "crate",
+         "kite",
+         "ramjet"
+      ]
+   ]
+}
