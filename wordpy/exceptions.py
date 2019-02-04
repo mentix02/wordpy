@@ -19,3 +19,4 @@ class InvalidCredentialsException(Exception):
     are wrong and API returns
     with a status code of 403
     """
+    pass
