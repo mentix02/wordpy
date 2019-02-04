@@ -14,7 +14,7 @@ setuptools.setup(
     author='manan',
     author_email='manan.yadav02@gmail.com',
     description='A dictionary program for nix* terminals',
-    packages=['wordpy'],
+    packages=['wordpy', 'tests'],
     scripts=['bin/wordpy'],
     test_suite='nose.collector',
     tests_require=['nose'],
