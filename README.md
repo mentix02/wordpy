@@ -19,16 +19,6 @@ When you first use wordpy, you'll recieve a prompt to enter your recently acquir
 
 The program is extremely simple - you literally just get the definition of a word in your terminal. Or the synonyms, antonyms or even the origin i.e. etymology of the word if you're feeling adventurous.
 
-### Flags
-
-|       Flag      |       Usage       |
-|:---------------:|:-----------------:|
-|  -s, --synonyms |  display synonyms |
-|  -a, --antonyms |  display antonyms |
-| -e, --etymology |   show etymology  |
-|  -v, --version  |  display version  |
-|    -h, --help   | show help message |
-
 ### Commands
 
 ```sh
@@ -58,6 +48,20 @@ These flags can be combined to get whatever the user asks for. For example to ge
 ```sh
 $ wordpy -ae <word>
 ```
+
+<br/ >
+<center>
+
+|       Flag      |       Usage       |
+|:---------------:|:-----------------:|
+|  -s, --synonyms |  display synonyms |
+|  -a, --antonyms |  display antonyms |
+| -e, --etymology |   show etymology  |
+|  -v, --version  |  display version  |
+|    -h, --help   | show help message |
+
+</center>
+<br/>
 
 ### Examples
 
