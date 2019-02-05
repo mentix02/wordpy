@@ -33,7 +33,10 @@ class Word:
         self._json = {}
         self.category = ''
         self.synonyms = []
+        self.antonyms = []
+        self.etymology = ''
         self.definition = ''
+        self.thesaurus: tWord = ''
 
         self.word = str(word).lower()
 
@@ -85,14 +88,32 @@ class Word:
 
         return data.text
 
+    def get_thesaurus(self) -> tWord:
+        """
+        load tWord module if any
+        flags for synonyms or
+        antonyms is provided for
+        the specific self.word
+        """
+        self.thesaurus = tWord(self.word)
+        return self.thesaurus
+
+    def fill_empty_thesaurus(self):
+        """
+        check if the thesaurus
+        object has been initialized
+        """
+        if self.thesaurus == '':
+            self.get_thesaurus()
+
     def get_synonyms(self) -> list:
         """
-        the design choice to 
+        the design choice to
         not call this in __init__()
         was consciously made as this
         calls another package that in
         turn makes other requests to a
-        different online service thus 
+        different online service thus
         increasing the total response time
         taken for making a call to the inline
         dictionary API itself. calling this
@@ -100,15 +121,39 @@ class Word:
         to the Word class and should be
         treated like so. not all users want
         to know the synonyms for a word and
-        if they do then this is the only 
-        function that will be called and 
+        if they do then this is the only
+        function that will be called and
         the class will never go through the
         __repr__() method at all
         """
-        thesaurus = tWord(self.word)
-        synonyms = thesaurus.synonyms(0)
-        self.synonyms = synonyms
-        return synonyms
+
+        self.fill_empty_thesaurus()
+
+        self.synonyms = self.thesaurus.synonyms(0)
+        return self.synonyms
+
+    def get_antonyms(self) -> list:
+        """
+        reasons for not including
+        this in __init__() are the
+        same as self.get_synonyms()
+        """
+
+        self.fill_empty_thesaurus()
+
+        self.antonyms = self.thesaurus.antonyms(0)
+        return self.antonyms
+
+    def get_etymology(self) -> str:
+        """
+        get_<pattern> syntax
+        follows over here as well
+        """
+
+        self.fill_empty_thesaurus()
+
+        self.etymology = self.thesaurus.origin()
+        return self.etymology
 
     def display_synonyms(self):
         """
@@ -118,13 +163,38 @@ class Word:
         nothing else
         """
         self.get_synonyms()
+
         if len(self.synonyms) == 0:
             print(utils.error(f'No synonyms found for - {self.word}'))
         else:
-            print(self)
             print(utils.success('Synonyms'))
-            print(', '.join(self.synonyms))
-            # print(f'{self.word} - ', ',  '.join(self.synonyms))
+            print(utils.p_list(self.synonyms))
+
+    def display_antonyms(self):
+        """
+        same as self.display_synonyms()
+        in regards to calling __repr__()
+        """
+        self.get_antonyms()
+
+        if len(self.antonyms) == 0:
+            print(utils.error(f'No antonyms found for - {self.word}'))
+        else:
+            print(utils.success('Antonyms'))
+            print(utils.p_list(self.antonyms))
+
+    def display_etymology(self):
+        """
+        same reasons follow for
+        as self.display_synonyms()
+        """
+        self.get_etymology()
+
+        if len(self.etymology) == '':
+            print(utils.error(f'No etymology found for - {self.word}'))
+        else:
+            print(utils.success('Etymology'))
+            print(self.etymology)
 
     def __repr__(self) -> str:
         """

@@ -18,16 +18,12 @@ class SynonymTest(unittest.TestCase):
 
     def setUp(self):
         self.car = Word('car')
-        self.airplane = Word('airplane')
+        self.happy = Word('happy')
 
-    def test_getting_synonyms(self):
+    def test_get_synonyms(self):
         self.car.get_synonyms()
-        self.airplane.get_synonyms()
+        self.happy.get_synonyms()
 
     def test_synonyms(self):
-        self.assertEqual(data['car'][1], self.car.get_synonyms())
-        self.assertEqual(data['airplane'][1], self.airplane.get_synonyms())
-
-
-if __name__ == '__main__':
-    unittest.main()
+        self.assertEqual(data['car']['synonyms'], self.car.get_synonyms())
+        self.assertEqual(data['happy']['synonyms'], self.happy.get_synonyms())

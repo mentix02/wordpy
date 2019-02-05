@@ -64,6 +64,12 @@ $ pip install nose
 $ python setup.py test
 ```
 
+or run `nosetests` for a cleaner output - 
+
+```sh
+$ nosetests
+```
+
 I've never been a big fan of testing... let me rephrase, I've never been a big fan of writing tests myself but there's a handful of them in `tests/` that should succeed before you even think about committing. 
 
 Any new feature should come with its own `test_<name_of_feature>.py` file in the said `tests/` directory and should be verbose with at least two cases.
@@ -75,6 +81,6 @@ Any new feature should come with its own `test_<name_of_feature>.py` file in the
 - [ ] Optimization
 - [ ] Documentation (?)
 - [ ] Even more features
-- - [ ] antonyms
-- - [ ] etymologies
+- - [x] antonyms
+- - [x] etymologies
 - - [ ] different definitions

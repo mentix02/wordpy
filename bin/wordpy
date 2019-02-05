@@ -8,19 +8,25 @@ import argparse
 
 import wordpy
 
-__version__ = '1.1.0'
+__version__ = '1.1.1'
 
 parser = argparse.ArgumentParser(description='A dictionary program for nix* terminals')
 
 parser.add_argument('word', help='word to be defined', action='store', type=str)
 parser.add_argument('-s', '--synonyms', help='get synonyms for word', action='store_true')
+parser.add_argument('-a', '--antonyms', help='get antonyms for word', action='store_true')
+parser.add_argument('-e', '--etymology', help='get etymology for word', action='store_true')
 parser.add_argument('-v', '--version', help='display version', action='version', version=f'%(prog)s {__version__}')
 
 args = parser.parse_args()
 
 word = wordpy.Word(args.word)
 
+print(word)
+
 if args.synonyms:
     word.display_synonyms()
-else:
-    print(word)
+if args.antonyms:
+    word.display_antonyms()
+if args.etymology:
+    word.display_etymology()
