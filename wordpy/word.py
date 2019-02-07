@@ -103,8 +103,12 @@ class Word:
         check if the thesaurus
         object has been initialized
         """
-        if self.thesaurus == '':
-            self.get_thesaurus()
+        try:
+            if self.thesaurus == '':
+                self.get_thesaurus()
+        except Exception as e:
+            print(utils.error(e))
+            exit(1)
 
     def get_synonyms(self) -> list:
         """

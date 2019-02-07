@@ -9,6 +9,16 @@ Simply use pip to install the latest stable version -
 $ pip install wordpy
 ```
 
+To get the bleeding edge version - 
+
+```sh
+pip install git+https://github.com/mentix02/wordpy.git
+```
+
+### Requirements
+
+wordpy is available for all Unix and Unix-like operating systems. It supports Python 3.6 and above.
+
 ## Usage
 
 ### Getting API keys
