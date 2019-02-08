@@ -29,4 +29,7 @@ if args.synonyms:
 if args.antonyms:
     word.display_antonyms()
 if args.etymology:
-    word.display_etymology()
+    try:
+        word.display_etymology()
+    except UnicodeEncodeError:
+        print(wordpy.utils.error('Your terminal doesn\'t support unicode characters.'))

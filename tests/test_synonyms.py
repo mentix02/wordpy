@@ -10,7 +10,7 @@ try:
     with open('./data.json') as data_file:
         data = json.loads(data_file.read())
 except FileNotFoundError:
-    raw = requests.get('https://pastebin.com/raw/VatVLSLQ').text
+    raw = requests.get('https://pastebin.com/raw/C904cJLK').text
     data = json.loads(raw)
 
 
