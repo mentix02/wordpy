@@ -3,6 +3,7 @@ author : mentix02
 timestamp : Sat Feb  2 16:49:05 2019
 """
 
+import os
 import json
 import requests
 
@@ -69,7 +70,7 @@ class Word:
         if data.status_code == 404:
             # raise exceptions.WordNotFound
             # commented out the exception because it looks ugly
-            print(utils.error(f'Word {self.word} was not found'))
+            print(utils.error(f'Word `{self.word}` was not found'))
             exit(1)
         elif data.status_code == 403:
             # documented over at 
@@ -79,6 +80,9 @@ class Word:
             # have extended the limit usage
             print(utils.error(f'Invalid credentials. Please manually edit ' +
                               '/tmp/keys.json with proper application id.'))
+            return_code = os.system(f'{os.getenv('EDITOR')} /tmp/keys.json')
+            if return_code != 0:
+                print(utils.error('Please set a default $EDITOR variable for shell.'))
             exit(1)
         elif data.status_code != 200:
             # handling all other errors
