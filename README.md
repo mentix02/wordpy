@@ -1,4 +1,4 @@
-# wordpy
+# wordpy ![License](https://img.shields.io/pypi/l/wordpy.svg?style=flat) ![Version](https://img.shields.io/pypi/v/wordpy.svg?style=flat)
 A dictionary program for nix* terminals
 
 ## Installation
