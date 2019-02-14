@@ -80,7 +80,7 @@ class Word:
             # have extended the limit usage
             print(utils.error(f'Invalid credentials. Please manually edit ' +
                               '/tmp/keys.json with proper application id.'))
-            return_code = os.system(f'{os.getenv('EDITOR')} /tmp/keys.json')
+            return_code = os.system(f"{os.getenv('EDITOR')} /tmp/keys.json")
             if return_code != 0:
                 print(utils.error('Please set a default $EDITOR variable for shell.'))
             exit(1)

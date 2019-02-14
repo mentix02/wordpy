@@ -24,3 +24,4 @@ def error(text: str) -> str:
 
 def p_list(words: list) -> str:
     return ', '.join(words)
+
