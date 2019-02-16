@@ -16,7 +16,8 @@ parser.add_argument('word', help='word to be defined', action='store', type=str)
 parser.add_argument('-s', '--synonyms', help='get synonyms for word', action='store_true')
 parser.add_argument('-a', '--antonyms', help='get antonyms for word', action='store_true')
 parser.add_argument('-e', '--etymology', help='get etymology for word', action='store_true')
-parser.add_argument('-v', '--version', help='display version', action='version', version=f'%(prog)s {__version__}')
+parser.add_argument('-v', '--version', help='display version',
+                    action='version', version=f'%(prog)s {__version__}')
 
 args = parser.parse_args()
 

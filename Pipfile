@@ -9,6 +9,7 @@ verify_ssl = true
 requests = "==2.21.0"
 thesaurus = "==0.2.3"
 termcolor = "==1.1.0"
+pylint = "*"
 
 [requires]
 python_version = "3.7"

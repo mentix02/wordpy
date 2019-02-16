@@ -111,7 +111,7 @@ class Word:
             if self.thesaurus == '':
                 self.get_thesaurus()
         except Exception as e:
-            print(utils.error(e))
+            print(utils.error(e.__str__()))
             exit(1)
 
     def get_synonyms(self) -> list:
